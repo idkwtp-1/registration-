@@ -1,23 +1,21 @@
-# stage 1 (BUILD)
+# Stage 1
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-# SDK => Software Development Kit
 
+# SRC => Source
 WORKDIR /src
 
 ENV PATH="$PATH:/root/.dotnet/tools"
 
-# like .csproj = package.json package-lock.json ... *.json
 COPY *.csproj .
 
-# like npm install
-RUN dotnet restore
+RUN dotnet restore 
 
 COPY . .
 
-# like => npm run build
 RUN dotnet publish -c Release -o /app/publish
 
-# stage 2 (RUN)
+
+# Stage 2
 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 
@@ -27,4 +25,4 @@ COPY --from=build /app/publish .
 
 EXPOSE 8080
 
-ENTRYPOINT [ "sh", "-c", "dotnet api.dll" ]
+ENTRYPOINT ["sh", "-c", "dotnet api.dll"]

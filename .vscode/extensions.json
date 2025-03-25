@@ -1,7 +1,6 @@
 {
     "recommendations": [
         "netcorext.uuid-generator",
-        "qwtel.sqlite-viewer",
-        "humao.rest-client"
+        "qwtel.sqlite-viewer"
     ]
 }

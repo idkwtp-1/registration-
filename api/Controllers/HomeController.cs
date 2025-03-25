@@ -1,15 +1,14 @@
 namespace API.Controllers {
-
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
 
     [ApiController]
     [Route("")]
-    public class HomeController: ControllerBase
+    public class HomeController : ControllerBase
     {
-        // http://localhost/
+
         [HttpGet]
-        public IActionResult ApiIsWroking()
+        public IActionResult ApiIsWorking()
         {
             return Ok(new { Status = "Success", Message = "API is working"});
         }

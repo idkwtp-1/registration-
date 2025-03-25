@@ -1,10 +1,12 @@
 namespace API.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+
     using Microsoft.AspNetCore.Identity;
     using Microsoft.IdentityModel.Tokens;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
+
     using System.Text;
 
 
@@ -24,7 +26,7 @@ namespace API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        // Inject Dependencies
+        // Inject Dependencies (Dependecy Injection)
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IConfiguration _configuration;
@@ -45,7 +47,7 @@ namespace API.Controllers
 
             if (result.Succeeded){
                 await _userManager.AddToRoleAsync(user, "User");
-                return Ok(new { message = "User registred seccessfully" });
+                return Ok(new { message = "User registred successfully" });
             }
 
             return BadRequest(result.Errors);
@@ -65,7 +67,6 @@ namespace API.Controllers
 
             return Unauthorized();
         }
-
 
         // --
 
